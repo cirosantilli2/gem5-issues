@@ -1,0 +1,82 @@
+$ time ./run -a arm -E 'm5 exit' -g -- --cpu-type=HPI --caches --l2cache --l1d_size=1024kB --l1i_size=1024kB --l2_size=1024kB --l3_size=1024kB
+M5_PATH='/home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/gem5-1.0/system' \
+ '/home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/gem5-1.0/gem5/build/ARM/gem5.opt' \
+--debug-file=trace.txt \
+ -d '/home/ciro/bak/git/linux-kernel-module-cheat/out/arm/gem5/m5out' \
+'/home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/gem5-1.0/gem5/configs/example/fs.py' \
+--disk-image='/home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/images/rootfs.ext2' \
+--kernel='/home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/linux-custom/vmlinux' \
+--mem-size='256MB' \
+--num-cpus='1' \
+--script='/home/ciro/bak/git/linux-kernel-module-cheat/data/readfile' \
+ --command-line='earlyprintk=pl011,0x1c090000 console=ttyAMA0 lpj=19988480 rw loglevel=8 mem=256MB root=/dev/sda console_msg_format=syslog nokaslr norandmaps printk.devkmsg=on printk.time=y init=/eval_base64.sh\
+--dtb-file='/home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/gem5-1.0/gem5/system/arm/dt/armv7_gem5_v1_1cpu.dtb' \
+--machine-type=VExpress_GEM5_V1 \
+ --cpu-type=HPI --caches --l2cache --l1d_size=1024kB --l1i_size=1024kB --l2_size=1024kB --l3_size=1024kB
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Apr 22 2018 12:43:20
+gem5 started Apr 22 2018 13:14:43
+gem5 executing on ciro-p51, pid 29363
+command line: /home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/gem5-1.0/gem5/build/ARM/gem5.opt --debug-file=trace.txt -d /home/ciro/bak/git/linux-kernel-module-cheat/out/arm/gem5/m5out /homB
+
+Global frequency set at 1000000000000 ticks per second
+warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (256 Mbytes)
+info: kernel located at: /home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/linux-custom/vmlinux
+Listening for system connection on port 5900
+Listening for system connection on port 3456
+0: system.remote_gdb: listening for remote gdb on port 7000
+info: Using bootloader at address 0x10
+info: Using kernel entry physical address at 0x80008000
+info: Loading DTB file: /home/ciro/bak/git/linux-kernel-module-cheat/out/arm/buildroot/build/gem5-1.0/gem5/system/arm/dt/armv7_gem5_v1_1cpu.dtb at address 0x88000000
+**** REAL SIMULATION ****
+warn: Existing EnergyCtrl, but no enabled DVFSHandler found.
+info: Entering event queue @ 0.  Starting simulation...
+warn: The csselr register isn't implemented.
+warn: The ccsidr register isn't implemented and always reads as 0.
+warn:   instruction 'mcr dcisw' unimplemented
+warn: Not doing anything for miscreg ACTLR
+warn: Not doing anything for write of miscreg ACTLR
+warn: CP14 unimplemented crn[0], opc1[6], crm[0], opc2[0]
+warn: CP14 unimplemented crn[0], opc1[6], crm[0], opc2[0]
+warn:   instruction 'mcr icimvau' unimplemented
+warn:   instruction 'mcr bpiallis' unimplemented
+warn:   instruction 'mcr icialluis' unimplemented
+warn: The clidr register always reports 0 caches.
+warn: clidr LoUIS field of 0b001 to match current ARM implementations.
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+warn:   instruction 'mcr dccisw' unimplemented
+warn: Tried to read RealView I/O at offset 0x60 that doesn't exist
+warn: Tried to read RealView I/O at offset 0x48 that doesn't exist
+warn: Tried to write RVIO at offset 0xa8 (data 0) that doesn't exist
+warn: Tried to write RVIO at offset 0xa8 (data 0) that doesn't exist
+warn: Tried to write RVIO at offset 0xa8 (data 0) that doesn't exist
+warn: Tried to write RVIO at offset 0xa8 (data 0) that doesn't exist
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+warn: CP14 unimplemented crn[1], opc1[0], crm[1], opc2[4]
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+info: trap check M:0 N:0 1:0 2:0 hdcr 0, hcptr 3fff, hstr 0
+warn: CP14 unimplemented crn[1], opc1[0], crm[3], opc2[4]
+warn: CP14 unimplemented crn[1], opc1[0], crm[0], opc2[4]
+warn: CP14 unimplemented crn[0], opc1[0], crm[7], opc2[0]
+warn: CP14 unimplemented crn[1], opc1[0], crm[5], opc2[4]
+warn: Tried to read RealView I/O at offset 0x8 that doesn't exist
+warn: Tried to read RealView I/O at offset 0x48 that doesn't exist
+warn:   instruction 'mcr bpiall' unimplemented
+Exiting @ tick 557819212000 because m5_exit instruction encountered
+
+real    33m47.855s
+user    33m45.753s
+sys     0m0.668s

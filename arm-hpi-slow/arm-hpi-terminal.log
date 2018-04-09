@@ -1,0 +1,165 @@
+
+0.000008 Trying 127.0.0.1...
+0.000181 Connected to localhost.
+0.000014 Escape character is '^]'.
+0.000009 ==== m5 slave terminal: Terminal 0 ====
+1483.957102 <6>[    0.000000] Booting Linux on physical CPU 0x0
+0.180212 <5>[    0.000000] Linux version 4.16.0 (ciro@ciro-p51) (gcc version 6.4.0 (Buildroot 2017.08-dirty)) #2 SMP Sat Apr 21 12:06:24 BST 2018
+0.160043 <6>[    0.000000] CPU: ARMv7 Processor [410fc0f0] revision 0 (ARMv7), cr=10c5387d
+0.153254 <6>[    0.000000] CPU: div instructions available: patching division code
+0.153110 <6>[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+0.148447 <6>[    0.000000] OF: fdt: Machine model: V2P-CA15
+0.151648 <4>[    0.000000] OF: fdt: Ignoring memory range 0x100000000 - 0x480000000
+0.147955 <6>[    0.000000] Memory policy: Data cache writealloc
+0.148380 <7>[    0.000000] On node 0 totalpages: 65536
+0.147330 <7>[    0.000000]   Normal zone: 512 pages used for memmap
+0.147959 <7>[    0.000000]   Normal zone: 0 pages reserved
+0.148664 <7>[    0.000000]   Normal zone: 65536 pages, LIFO batch:15
+0.163356 <5>[    0.000000] random: fast init done
+0.153111 <6>[    0.000000] percpu: Embedded 16 pages/cpu @(ptrval) s36300 r8192 d21044 u65536
+0.150250 <7>[    0.000000] pcpu-alloc: s36300 r8192 d21044 u65536 alloc=16*4096
+0.144679 <7>[    0.000000] pcpu-alloc: [0] 0
+0.151683 <6>[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 65024
+0.192771 <5>[    0.000000] Kernel command line: earlyprintk=pl011,0x1c090000 console=ttyAMA0 lpj=19988480 rw loglevel=8 mem=256MB root=/dev/sda console_msg_format=syslog nokaslr norandmaps printk.devkmsg=on printk.time=y init=/eval_base64.sh -  lkmc_eval="bTUgZXhpdA=="
+0.158134 <6>[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+0.154629 <6>[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+0.167663 <6>[    0.000000] Memory: 247536K/262144K available (7168K kernel code, 510K rwdata, 2212K rodata, 1024K init, 465K bss, 14608K reserved, 0K cma-reserved)
+0.771196 <5>[    0.000000] Virtual kernel memory layout:
+0.011711 <5>[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+0.011748 <5>[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+0.011768 <5>[    0.000000]     vmalloc : 0x90800000 - 0xff800000   (1776 MB)
+0.011954 <5>[    0.000000]     lowmem  : 0x80000000 - 0x90000000   ( 256 MB)
+0.011944 <5>[    0.000000]     modules : 0x7f000000 - 0x80000000   (  16 MB)
+0.012006 <5>[    0.000000]       .text : 0x(ptrval) - 0x(ptrval)   (8160 kB)
+0.011948 <5>[    0.000000]       .init : 0x(ptrval) - 0x(ptrval)   (1024 kB)
+0.011906 <5>[    0.000000]       .data : 0x(ptrval) - 0x(ptrval)   ( 511 kB)
+0.012316 <5>[    0.000000]        .bss : 0x(ptrval) - 0x(ptrval)   ( 466 kB)
+0.152979 <6>[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+0.142946 <6>[    0.000000] ftrace: allocating 24125 entries in 71 pages
+0.139634 <6>[    0.000000] Hierarchical RCU implementation.
+0.141693 <6>[    0.000000]      RCU event tracing is enabled.
+0.143979 <6>[    0.000000]      RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=1.
+0.145332 <6>[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+0.142593 <6>[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+0.148230 <4>[    0.000000] arch_timer: WARNING: Invalid trigger for IRQ19, assuming level low
+0.143579 <4>[    0.000000] arch_timer: WARNING: Please fix your firmware
+0.144602 <6>[    0.000000] arch_timer: cp15 timer(s) running at 25.16MHz (virt).
+0.157841 <6>[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x5cdd39714, max_idle_ns: 440795202620 ns
+0.149633 <6>[    0.000003] sched_clock: 56 bits at 25MHz, resolution 39ns, wraps every 4398046511084ns
+0.150753 <6>[    0.000011] Switching to timer-based delay loop, resolution 39ns
+0.153903 <6>[    0.000194] Console: colour dummy device 80x30
+0.163043 <6>[    0.000208] Calibrating delay loop (skipped) preset value.. 3997.69 BogoMIPS (lpj=19988480)
+0.152978 <6>[    0.000217] pid_max: default: 32768 minimum: 301
+0.157564 <6>[    0.000365] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+0.159657 <6>[    0.000377] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+0.168888 <6>[    0.000743] CPU: Testing write buffer coherency: ok
+0.154344 <3>[    0.000908] /cpus/cpu@0 missing clock-frequency property
+0.160262 <6>[    0.000915] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+0.161475 <6>[    0.001105] Setting up static identity map for 0x80100000 - 0x80100060
+0.155857 <6>[    0.001176] Hierarchical SRCU implementation.
+0.153976 <6>[    0.002434] smp: Bringing up secondary CPUs ...
+0.153199 <6>[    0.002439] smp: Brought up 1 node, 1 CPU
+0.156186 <6>[    0.002445] SMP: Total of 1 processors activated (3997.69 BogoMIPS).
+0.158681 <6>[    0.002451] CPU: All CPU(s) started in SVC mode.
+0.153210 <6>[    0.002771] devtmpfs: initialized
+0.159884 <6>[    0.003870] VFP support v0.3: implementor 41 architecture 4 part 30 variant a rev 0
+0.164727 <6>[    0.003952] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+0.154743 <6>[    0.003959] futex hash table entries: 256 (order: 2, 16384 bytes)
+0.149475 <6>[    0.005066] NET: Registered protocol family 16
+0.154175 <6>[    0.005806] DMA: preallocated 256 KiB pool for atomic coherent allocations
+0.150873 <6>[    0.080414] cpuidle: using governor ladder
+0.160929 <4>[    0.080876] hw-breakpoint: Debug register access (0xee113e93) caused undefined instruction on CPU 0
+0.161796 <4>[    0.080883] hw-breakpoint: Debug register access (0xee013e90) caused undefined instruction on CPU 0
+0.163166 <4>[    0.080889] hw-breakpoint: Debug register access (0xee003e17) caused undefined instruction on CPU 0
+0.153100 <4>[    0.080894] hw-breakpoint: CPU 0 failed to disable vector catch
+0.150145 <6>[    0.080922] Serial: AMBA PL011 UART driver
+0.159578 <4>[    0.081032] irq: type mismatch, failed to map hwirq-27 for interrupt-controller@2c001000!
+0.160737 <6>[    0.081599] 1c090000.uart: ttyAMA0 at MMIO 0x1c090000 (irq = 23, base_baud = 0) is a PL011 rev3
+0.284906 <6>[    0.084718] console [ttyAMA0] enabled
+154.295893 <6>[    0.096804] vgaarb: loaded
+0.842260 <5>[    0.096977] SCSI subsystem initialized
+0.947786 <7>[    0.097156] libata version 3.00 loaded.
+0.767179 <6>[    0.097309] usbcore: registered new interface driver usbfs
+0.203979 <6>[    0.097376] usbcore: registered new interface driver hub
+0.182200 <6>[    0.097440] usbcore: registered new device driver usb
+1.128243 <6>[    0.097684] Advanced Linux Sound Architecture Driver Initialized.
+4.068428 <6>[    0.098661] clocksource: Switched to clocksource arch_sys_counter
+147.736973 <6>[    0.143409] NET: Registered protocol family 2
+0.986100 <6>[    0.143788] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 6144 bytes)
+0.064068 <6>[    0.143858] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+0.084914 <6>[    0.143932] TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+0.085482 <6>[    0.144015] TCP: Hash tables configured (established 2048 bind 2048)
+0.141767 <6>[    0.144146] UDP hash table entries: 256 (order: 1, 8192 bytes)
+0.060449 <6>[    0.144208] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+0.231878 <6>[    0.144343] NET: Registered protocol family 1
+2.024299 <6>[    0.144985] RPC: Registered named UNIX socket transport module.
+0.030422 <6>[    0.145029] RPC: Registered udp transport module.
+0.030304 <6>[    0.145065] RPC: Registered tcp transport module.
+0.034820 <6>[    0.145101] RPC: Registered tcp NFSv4.1 backchannel transport module.
+0.032485 <7>[    0.145151] PCI: CLS 0 bytes, default 64
+3.404612 <6>[    0.146273] workingset: timestamp_bits=30 max_order=16 bucket_order=0
+18.611656 <6>[    0.151842] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+5.525795 <6>[    0.153472] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+0.844274 <6>[    0.153747] 9p: Installing v9fs 9p2000 file system support
+2.476240 <6>[    0.154534] io scheduler noop registered (default)
+0.033223 <6>[    0.154572] io scheduler mq-deadline registered
+0.031114 <6>[    0.154608] io scheduler kyber registered
+2.327429 <6>[    0.155339] PCI: OF: host bridge /pci ranges:
+0.041117 <6>[    0.155378] PCI: OF:   No bus range found for /pci, using [bus 00-ff]
+0.055999 <6>[    0.155434] PCI: OF:    IO 0x2f000000..0x2f00ffff -> 0x00000000
+0.047124 <6>[    0.155483] PCI: OF:   MEM 0x40000000..0x7fffffff -> 0x40000000
+7.006925 <6>[    0.158574] pci-host-generic 30000000.pci: ECAM at [mem 0x30000000-0x3fffffff] for [bus 00-ff]
+0.251255 <6>[    0.158709] pci-host-generic 30000000.pci: PCI host bridge to bus 0000:00
+0.043275 <6>[    0.158760] pci_bus 0000:00: root bus resource [bus 00-ff]
+0.043264 <6>[    0.158804] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+0.045948 <6>[    0.158852] pci_bus 0000:00: root bus resource [mem 0x40000000-0x7fffffff]
+0.073714 <7>[    0.158923] pci 0000:00:01.0: [8086:7111] type 00 class 0x010185
+0.060767 <7>[    0.158983] pci 0000:00:01.0: reg 0x10: [io  0x0000-0x0007]
+0.048587 <7>[    0.159029] pci 0000:00:01.0: reg 0x14: [io  0x0000-0x0003]
+0.048680 <7>[    0.159075] pci 0000:00:01.0: reg 0x18: [io  0x0000-0x0007]
+0.048158 <7>[    0.159121] pci 0000:00:01.0: reg 0x1c: [io  0x0000-0x0003]
+0.048036 <7>[    0.159167] pci 0000:00:01.0: reg 0x20: [io  0x0000-0x000f]
+0.056931 <7>[    0.159216] pci 0000:00:01.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+0.347995 <6>[    0.159375] PCI: bus0: Fast back to back transfers enabled
+0.057748 <6>[    0.159429] pci 0000:00:01.0: BAR 6: assigned [mem 0x40000000-0x400007ff pref]
+0.046934 <6>[    0.159484] pci 0000:00:01.0: BAR 4: assigned [io  0x1000-0x100f]
+0.049656 <6>[    0.159533] pci 0000:00:01.0: BAR 0: assigned [io  0x1010-0x1017]
+0.049411 <6>[    0.159582] pci 0000:00:01.0: BAR 2: assigned [io  0x1018-0x101f]
+0.048621 <6>[    0.159631] pci 0000:00:01.0: BAR 1: assigned [io  0x1020-0x1023]
+0.048580 <6>[    0.159679] pci 0000:00:01.0: BAR 3: assigned [io  0x1024-0x1027]
+13.778062 <7>[    0.163866] ata_piix 0000:00:01.0: version 2.13
+0.048480 <6>[    0.163913] ata_piix 0000:00:01.0: enabling device (0040 -> 0041)
+4.836155 <6>[    0.165484] scsi host0: ata_piix
+1.053665 <6>[    0.165820] scsi host1: ata_piix
+0.336104 <6>[    0.165930] ata1: PATA max UDMA/33 cmd 0x1010 ctl 0x1020 bmdma 0x1000 irq 25
+0.039738 <6>[    0.165982] ata2: PATA max UDMA/33 cmd 0x1018 ctl 0x1024 bmdma 0x1008 irq 25
+0.991169 <6>[    0.166347] libphy: Fixed MDIO Bus: probed
+1.311445 <6>[    0.166818] usbcore: registered new interface driver usb-storage
+1.088910 <6>[    0.167229] rtc-pl031 1c170000.rtc: rtc core: registered pl031 as rtc0
+0.957780 <6>[    0.167599] ledtrig-cpu: registered to indicate activity on CPUs
+2.170672 <6>[    0.168347] usbcore: registered new interface driver usbhid
+0.028026 <6>[    0.168388] usbhid: USB HID core driver
+2.702081 <6>[    0.169280] oprofile: no performance counters
+0.291315 <6>[    0.169400] oprofile: using timer interrupt.
+0.451530 <6>[    0.169592] NET: Registered protocol family 17
+0.106890 <6>[    0.169658] 9pnet: Installing 9P2000 support
+0.860374 <5>[    0.169958] Registering SWP/SWPB emulation handler
+10.840704 <6>[    0.173910] rtc-pl031 1c170000.rtc: setting system clock to 2009-01-01 00:00:00 UTC (1230768000)
+0.088136 <6>[    0.174009] ALSA device list:
+0.026581 <6>[    0.174034]   No soundcards found.
+5.601192 F<6>[    0.268420] input: AT Raw Set 2 keyboard as /devices/platform/1c060000.kmi/serio0/input/input0
+3.689541 <6>[    0.328416] ata1.00: ATA-7: M5 IDE Disk, , max UDMA/66
+0.051353 <6>[    0.328457] ata1.00: 1048576 sectors, multi 0: LBA
+0.777988 <6>[    0.328716] ata1.00: configured for UDMA/33
+0.681695 <5>[    0.328962] scsi 0:0:0:0: Direct-Access     ATA      M5 IDE Disk      n/a  PQ: 0 ANSI: 5
+2.534305 <5>[    0.329476] sd 0:0:0:0: [sda] 1048576 512-byte logical blocks: (537 MB/512 MiB)
+0.167324 <5>[    0.329553] sd 0:0:0:0: [sda] Write Protect is off
+0.059237 <7>[    0.329593] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+0.293778 <5>[    0.329673] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+4.349397 <5>[    0.330628] sd 0:0:0:0: [sda] Attached SCSI disk
+2.693140 <3>[    0.488399] EXT4-fs (sda): couldn't mount as ext3 due to feature incompatibilities
+16.464401 <6>[    0.490754] EXT4-fs (sda): mounted filesystem without journal. Opts: (null)
+0.289876 <6>[    0.490815] VFS: Mounted root (ext4 filesystem) on device 8:0.
+20.676184 <6>[    0.492482] devtmpfs: mounted
+14.308922 <6>[    0.495488] Freeing unused kernel memory: 1024K
+Connection closed by foreign host.

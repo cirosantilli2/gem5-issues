@@ -1,0 +1,144 @@
+
+2018-04-22-13-23-20@ciro@ciro-p51$ ./gem5-shell 1 | tsi
+0.000009 Trying 127.0.0.1...
+0.000046 Connected to localhost.
+0.000029 Escape character is '^]'.
+0.000008 ==== m5 slave terminal: Terminal 0 ====
+138.850616 <6>[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fc0f0]
+0.039399 <5>[    0.000000] Linux version 4.16.0 (ciro@ciro-p51) (gcc version 6.4.0 (Buildroot 2017.08-dirty)) #7 SMP Sat Apr 21 19:49:04 BST 2018
+0.020297 <6>[    0.000000] Machine model: V2P-AARCH64
+0.019991 <5>[    0.000000] Memory limited to 256MB
+0.022695 <6>[    0.000000] efi: Getting EFI parameters from FDT:
+0.019886 <6>[    0.000000] efi: UEFI not found.
+0.021550 <7>[    0.000000] On node 0 totalpages: 65536
+0.024161 <7>[    0.000000]   DMA32 zone: 1024 pages used for memmap
+0.021250 <7>[    0.000000]   DMA32 zone: 0 pages reserved
+0.022507 <7>[    0.000000]   DMA32 zone: 65536 pages, LIFO batch:15
+0.019802 <5>[    0.000000] random: fast init done
+0.030172 <6>[    0.000000] percpu: Embedded 23 pages/cpu @        (ptrval) s56856 r8192 d29160 u94208
+0.026190 <7>[    0.000000] pcpu-alloc: s56856 r8192 d29160 u94208 alloc=23*4096
+0.018520 <7>[    0.000000] pcpu-alloc: [0] 0
+0.022335 <6>[    0.000000] Detected PIPT I-cache on CPU0
+0.029350 <6>[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 64512
+0.061695 <5>[    0.000000] Kernel command line: earlyprintk=pl011,0x1c090000 console=ttyAMA0 lpj=19988480 rw loglevel=8 mem=256MB root=/dev/sda console_msg_format=syslog nokaslr norandmaps printk.devkmsg=on printk.time=y init=/eval_base64.sh -  lkmc_eval="bTUgZXhpdA=="
+0.028249 <6>[    0.000000] Dentry cache hash table entries: 32768 (order: 6, 262144 bytes)
+0.026933 <6>[    0.000000] Inode-cache hash table entries: 16384 (order: 5, 131072 bytes)
+0.041743 <6>[    0.000000] Memory: 234944K/262144K available (5948K kernel code, 758K rwdata, 2084K rodata, 704K init, 643K bss, 27200K reserved, 0K cma-reserved)
+0.027554 <6>[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+0.024164 <6>[    0.000000] ftrace: allocating 20740 entries in 82 pages
+0.021794 <6>[    0.000000] Hierarchical RCU implementation.
+0.021474 <6>[    0.000000]      RCU event tracing is enabled.
+0.026344 <6>[    0.000000]      RCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=1.
+0.026947 <6>[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+0.024645 <6>[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+0.027391 <4>[    0.000000] arch_timer: WARNING: Invalid trigger for IRQ4, assuming level low
+0.024162 <4>[    0.000000] arch_timer: WARNING: Please fix your firmware
+0.026167 <6>[    0.000000] arch_timer: cp15 timer(s) running at 25.16MHz (virt).
+0.035789 <6>[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x5cdd39714, max_idle_ns: 440795202620 ns
+0.029737 <6>[    0.000003] sched_clock: 56 bits at 25MHz, resolution 39ns, wraps every 4398046511084ns
+0.022161 <6>[    0.000118] Console: colour dummy device 80x25
+0.030805 <6>[    0.000131] Calibrating delay loop (skipped) preset value.. 9994.24 BogoMIPS (lpj=19988480)
+0.022845 <6>[    0.000140] pid_max: default: 32768 minimum: 301
+0.026480 <6>[    0.000265] Mount-cache hash table entries: 512 (order: 0, 4096 bytes)
+0.027485 <6>[    0.000272] Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes)
+0.024121 <6>[    0.000933] ASID allocator initialised with 128 entries
+0.022626 <6>[    0.000981] Hierarchical SRCU implementation.
+0.026922 <6>[    0.001443] EFI services will not be available.
+0.023953 <6>[    0.001500] smp: Bringing up secondary CPUs ...
+0.024592 <6>[    0.001505] smp: Brought up 1 node, 1 CPU
+0.026650 <6>[    0.001510] SMP: Total of 1 processors activated.
+0.025206 <6>[    0.001517] CPU features: detected feature: 32-bit EL0 Support
+0.032833 <6>[    0.001523] CPU features: detected feature: Kernel page table isolation (KPTI)
+0.024282 <6>[    0.003494] CPU: All CPU(s) started at EL1
+0.022746 <6>[    0.003503] alternatives: patching kernel code
+0.023426 <6>[    0.003871] devtmpfs: initialized
+0.038012 <6>[    0.004752] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+0.026504 <6>[    0.004760] futex hash table entries: 256 (order: 3, 32768 bytes)
+0.024653 <6>[    0.005339] DMI not present or invalid.
+0.022255 <6>[    0.005467] NET: Registered protocol family 16
+0.033884 <6>[    0.036369] vdso: 2 pages (1 code @ 000000002f418b3c, 1 data @ 0000000073c004b8)
+0.032433 <6>[    0.036378] hw-breakpoint: found 2 breakpoint and 2 watchpoint registers.
+0.029380 <6>[    0.036553] DMA: preallocated 256 KiB pool for atomic allocations
+0.021629 <6>[    0.036558] Serial: AMBA PL011 UART driver
+0.034340 <4>[    0.036645] irq: type mismatch, failed to map hwirq-27 for interrupt-controller@2c001000!
+0.035542 <6>[    0.037138] 1c090000.uart: ttyAMA0 at MMIO 0x1c090000 (irq = 8, base_baud = 0) is a PL011 rev3
+0.032213 <6>[    0.039596] console [ttyAMA0] enabled
+8.028082 <6>[    0.041926] vgaarb: loaded
+0.394831 <5>[    0.042074] SCSI subsystem initialized
+0.219314 <7>[    0.042169] libata version 3.00 loaded.
+0.149308 <6>[    0.042233] pps_core: LinuxPPS API ver. 1 registered
+0.047476 <6>[    0.042272] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+0.051056 <6>[    0.042339] PTP clock support registered
+1.047607 <6>[    0.042709] clocksource: Switched to clocksource arch_sys_counter
+94.307247 <6>[    0.071537] NET: Registered protocol family 2
+0.696565 <6>[    0.071843] tcp_listen_portaddr_hash hash table entries: 256 (order: 0, 4096 bytes)
+0.056094 <6>[    0.071908] TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+0.089990 <6>[    0.071997] TCP bind hash table entries: 2048 (order: 3, 32768 bytes)
+0.109970 <6>[    0.072111] TCP: Hash tables configured (established 2048 bind 2048)
+0.110436 <6>[    0.072208] UDP hash table entries: 256 (order: 1, 8192 bytes)
+0.063034 <6>[    0.072271] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+0.215475 <6>[    0.072411] NET: Registered protocol family 1
+0.052794 <7>[    0.072456] PCI: CLS 0 bytes, default 128
+1.887723 <6>[    0.073124] workingset: timestamp_bits=62 max_order=16 bucket_order=0
+11.762999 <6>[    0.076455] 9p: Installing v9fs 9p2000 file system support
+1.552473 <6>[    0.076995] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 250)
+0.030908 <6>[    0.077049] io scheduler noop registered
+0.031179 <6>[    0.077082] io scheduler deadline registered
+0.378463 <6>[    0.077213] io scheduler cfq registered (default)
+0.031936 <6>[    0.077250] io scheduler mq-deadline registered
+0.031071 <6>[    0.077286] io scheduler kyber registered
+1.209335 <6>[    0.077701] PCI: OF: host bridge /pci ranges:
+0.046150 <6>[    0.077740] PCI: OF:   No bus range found for /pci, using [bus 00-ff]
+0.056798 <6>[    0.077795] PCI: OF:    IO 0x2f000000..0x2f00ffff -> 0x00000000
+0.049498 <6>[    0.077847] PCI: OF:   MEM 0x40000000..0x7fffffff -> 0x40000000
+0.108497 <6>[    0.077918] pci-host-generic 30000000.pci: ECAM at [mem 0x30000000-0x3fffffff] for [bus 00-ff]
+0.224177 <6>[    0.078036] pci-host-generic 30000000.pci: PCI host bridge to bus 0000:00
+0.042870 <6>[    0.078088] pci_bus 0000:00: root bus resource [bus 00-ff]
+0.043019 <6>[    0.078132] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+0.044437 <6>[    0.078180] pci_bus 0000:00: root bus resource [mem 0x40000000-0x7fffffff]
+0.063614 <7>[    0.078246] pci 0000:00:01.0: [8086:7111] type 00 class 0x010185
+0.058653 <7>[    0.078307] pci 0000:00:01.0: reg 0x10: [io  0x0000-0x0007]
+0.046394 <7>[    0.078352] pci 0000:00:01.0: reg 0x14: [io  0x0000-0x0003]
+0.046013 <7>[    0.078398] pci 0000:00:01.0: reg 0x18: [io  0x0000-0x0007]
+0.046504 <7>[    0.078444] pci 0000:00:01.0: reg 0x1c: [io  0x0000-0x0003]
+0.046502 <7>[    0.078489] pci 0000:00:01.0: reg 0x20: [io  0x0000-0x000f]
+0.054920 <7>[    0.078538] pci 0000:00:01.0: reg 0x30: [mem 0x00000000-0x000007ff pref]
+0.316767 <6>[    0.078695] pci 0000:00:01.0: BAR 6: assigned [mem 0x40000000-0x400007ff pref]
+0.082897 <6>[    0.078761] pci 0000:00:01.0: BAR 4: assigned [io  0x1000-0x100f]
+0.048729 <6>[    0.078810] pci 0000:00:01.0: BAR 0: assigned [io  0x1010-0x1017]
+0.048473 <6>[    0.078858] pci 0000:00:01.0: BAR 2: assigned [io  0x1018-0x101f]
+0.047219 <6>[    0.078906] pci 0000:00:01.0: BAR 1: assigned [io  0x1020-0x1023]
+0.047211 <6>[    0.078955] pci 0000:00:01.0: BAR 3: assigned [io  0x1024-0x1027]
+67.925919 <7>[    0.098063] ata_piix 0000:00:01.0: version 2.13
+0.049669 <6>[    0.098114] ata_piix 0000:00:01.0: enabling device (0000 -> 0001)
+1.753683 <6>[    0.098724] scsi host0: ata_piix
+0.660735 <6>[    0.098953] scsi host1: ata_piix
+0.274760 <6>[    0.099047] ata1: PATA max UDMA/33 cmd 0x1010 ctl 0x1020 bmdma 0x1000 irq 10
+0.041147 <6>[    0.099099] ata2: PATA max UDMA/33 cmd 0x1018 ctl 0x1024 bmdma 0x1008 irq 10
+1.221041 <6>[    0.099580] ledtrig-cpu: registered to indicate activity on CPUs
+1.958456 <6>[    0.100199] NET: Registered protocol family 10
+0.994336 <6>[    0.100628] Segment Routing with IPv6
+0.123930 <6>[    0.100693] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+0.750198 <6>[    0.100964] NET: Registered protocol family 17
+0.050541 <6>[    0.101008] NET: Registered protocol family 15
+0.072921 <6>[    0.101064] 9pnet: Installing 9P2000 support
+1.037740 <6>[    0.101417] registered taskstats version 1
+0.543610 <6>[    0.101631] hctosys: unable to open rtc device (rtc0)
+0.898147 <6>[    0.258824] ata1.00: ATA-7: M5 IDE Disk, , max UDMA/66
+0.036816 <6>[    0.258865] ata1.00: 1048576 sectors, multi 0: LBA
+0.180263 <6>[    0.258981] ata1.00: configured for UDMA/33
+0.383812 <5>[    0.259214] scsi 0:0:0:0: Direct-Access     ATA      M5 IDE Disk      n/a  PQ: 0 ANSI: 5
+0.970120 <5>[    0.259544] sd 0:0:0:0: Attached scsi generic sg0 type 0
+0.618749 <5>[    0.259753] sd 0:0:0:0: [sda] 1048576 512-byte logical blocks: (537 MB/512 MiB)
+0.097975 <5>[    0.259828] sd 0:0:0:0: [sda] Write Protect is off
+0.040157 <7>[    0.259868] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+0.164722 <5>[    0.259941] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+2.372083 <5>[    0.260752] sd 0:0:0:0: [sda] Attached SCSI disk
+0.328255 <3>[    0.260918] EXT4-fs (sda): couldn't mount as ext3 due to feature incompatibilities
+0.380444 <6>[    0.261090] EXT4-fs (sda): mounting ext2 file system using the ext4 subsystem
+3.298255 <6>[    0.262221] EXT4-fs (sda): mounted filesystem without journal. Opts: (null)
+0.050776 <6>[    0.262279] VFS: Mounted root (ext2 filesystem) on device 8:0.
+1.769445 <6>[    0.262887] devtmpfs: mounted
+3.834545 <6>[    0.264058] Freeing unused kernel memory: 704K
+Connection closed by foreign host.
+!

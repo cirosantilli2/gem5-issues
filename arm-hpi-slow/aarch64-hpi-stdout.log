@@ -1,0 +1,44 @@
+1$ time ./run -a x86_64 -E 'm5 exit' -g -- --cpu-type=DerivO3CPU --caches --l2cache --l1d_size=1024kB --l1i_size=1024kB --l2_size=1024kB --l3_size=1024kB | tsi
+0.000009 M5_PATH='/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/gem5-1.0/system' \
+0.000073  '/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/gem5-1.0/gem5/build/X86/gem5.opt' \
+0.000013 --debug-file=trace.txt \
+0.000020  -d '/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/gem5/m5out' \
+0.000006 '/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/gem5-1.0/gem5/configs/example/fs.py' \
+0.000024 --disk-image='/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/images/rootfs.ext2' \
+0.000007 --kernel='/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/linux-custom/vmlinux' \
+0.000007 --mem-size='256MB' \
+0.000007 --num-cpus='1' \
+0.000006 --script='/home/ciro/bak/git/linux-kernel-module-cheat/data/readfile' \
+0.000007  --command-line='earlyprintk=ttyS0 console=ttyS0 lpj=7999923 root=/dev/sda console_msg_format=syslog nokaslr norandmaps printk.devkmsg=on printk.time=y init=/eval_base64.sh console=ttyS0 -  lkmc_eval="bTUgZXhpdA=="' \
+0.000006  --cpu-type=DerivO3CPU --caches --l2cache --l1d_size=1024kB --l1i_size=1024kB --l2_size=1024kB --l3_size=1024kB
+warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (256 Mbytes)
+0.209815 gem5 Simulator System.  http://gem5.org
+0.000054 gem5 is copyrighted software; use the --copyright option for details.
+0.000020
+0.000013 gem5 compiled Apr 21 2018 21:41:19
+0.000014 gem5 started Apr 22 2018 13:29:04
+0.000012 gem5 executing on ciro-p51, pid 14394
+0.000012 command line: /home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/gem5-1.0/gem5/build/X86/gem5.opt --debug-file=trace.txt -d /home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/gem5/m5out /home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/gem5-1.0/gem5/configs/example/fs.py --disk-image=/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/images/rootfs.ext2 --kernel=/home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/linux-custom/vmlinux --mem-size=256MB --num-cpus=1 --script=/home/ciro/bak/git/linux-kernel-module-cheat/data/readfile '--command-line=earlyprintk=ttyS0 console=ttyS0 lpj=7999923 root=/dev/sda console_msg_format=syslog nokaslr norandmaps printk.devkmsg=on printk.time=y init=/eval_base64.sh console=ttyS0 -  lkmc_eval="bTUgZXhpdA=="' --cpu-type=DerivO3CPU --caches --l2cache --l1d_size=1024kB --l1i_size=1024kB --l2_size=1024kB --l3_size=1024kB
+0.000018
+0.000013 Global frequency set at 1000000000000 ticks per second
+info: kernel located at: /home/ciro/bak/git/linux-kernel-module-cheat/out/x86_64/buildroot/build/linux-custom/vmlinux
+Listening for com_1 connection on port 3458
+0: system.remote_gdb: listening for remote gdb on port 7002
+warn: Reading current count from inactive timer.
+info: Entering event queue @ 0.  Starting simulation...
+0.410672 **** REAL SIMULATION ****
+warn: x86 cpuid family 0x0000: unimplemented function 6
+warn: x86 cpuid: unknown family 0x81ee
+warn: x86 cpuid family 0x0000: unimplemented function 6
+warn: x86 cpuid family 0x0000: unimplemented function 6
+warn: instruction 'fninit' unimplemented
+warn: Don't know what interrupt to clear for console.
+warn: instruction 'sgdt_Ms' unimplemented
+warn: x86 cpuid family 0x0000: unimplemented function 6
+warn: x86 cpuid family 0x0000: unimplemented function 6
+warn: x86 cpuid family 0x0000: unimplemented function 6
+^C
+
+real    74m13.748s
+user    74m12.030s
+sys     0m0.376s
