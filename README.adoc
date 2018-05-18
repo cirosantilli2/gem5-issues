@@ -1,0 +1,89 @@
+= gem5 issues
+:idprefix:
+:idseparator: -
+:sectanchors:
+:sectlinks:
+:sectnumlevels: 6
+:sectnums:
+:toc: macro
+:toclevels: 6
+:toc-title:
+
+gem5 issue tracker, HOWTOs, FAQs, and architecture overview.
+
+toc::[]
+
+== About
+
+This repository has two functions:
+
+* be an <<issue-tracker>> for gem5
+* contain a <<cheatsheet>> of how to do common stuff in gem5
+
+=== Issue tracker
+
+Completely unofficial gem5 issue tracker for https://github.com/gem5/gem5 , the mailing list is the only official one: http://gem5.org/Mailing_Lists Request for official GitHub tracker was declined:
+
+* https://www.mail-archive.com/gem5-dev@gem5.org/msg24951.html
+* https://github.com/cirosantilli-work/gem5-issues/issues/3
+
+go ping the mailing list thread if you want it.
+
+Maintained on a best effort basis, I will try to label, reproduce and close bugs reported.
+
+Anyone is welcome to open bugs here, but they will likely not be seen by any devs except me.
+
+For usage questions, prefer the Stack Overflow gem5 tag: https://stackoverflow.com/questions/tagged/gem5 although it will also likely not be seen by the other main devs currently either.
+
+Double posting here in addition to the official tracker is encouraged.
+
+=== Cheatsheet
+
+Linux kernel related things and some more will be kept at: https://github.com/cirosantilli/linux-kernel-module-cheat#gem5 only baremetal, internals and other Linux-agnostic stuff will be documented here.
+
+These cheats will often be summaries of solved issues, or smaller things which we didn't think deserve an issue, or that we were able to solve by ourselves without creating an issue.
+
+== How to get a graph graphical representation of the topology of the system being simulated?
+
+....
+pip install --user pydot
+....
+
+then run gem5 normally, and:
+
+....
+xdg-open m5out/config.dot.pdf
+....
+
+As in http://gem5.org/wiki/images/0/0e/ASPLOS2017_gem5_tutorial.pdf page 25.
+
+== How does gem5 find its Python configuration imports?
+
+I think it is just done with `PYTHONPATH`, nothing is hardcoded on the executable.
+
+However, many of the scripts add stuff to the `PYTHONPATH`, so that you can just point to them, and they will import the relative files automatically.
+
+E.g. `fs.py` contains https://github.com/gem5/gem5/blob/49f96e7b77925837aa5bc84d4c3453ab5f07408e/configs/example/fs.py#L55:
+
+....
+addToPath('../')
+....
+
+== How are the arm disk images generated?
+
+TODO
+
+The ones present at http://www.gem5.org/dist/current/arm/ with filenames of type:
+
+* `arm-system-YYYY-MM.tar.xz`
+* `aarch-system-YYYY-MM.tar.xz`
+
+I want to know what they contain in detail, and how to modify them.
+
+== How to specify the bootloader explicitly without M5_PATH in fs.py?
+
+TODO
+
+I just want to point to `boot_emm.arm` directly, and not have it be found with the annoying environment `M5_OUT` variable.
+
+Does not seem possible as of 49f96e7b77925837aa5bc84d4c3453ab5f07408e.
