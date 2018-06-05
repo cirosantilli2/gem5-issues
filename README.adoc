@@ -87,3 +87,21 @@ TODO
 I just want to point to `boot_emm.arm` directly, and not have it be found with the annoying environment `M5_OUT` variable.
 
 Does not seem possible as of 49f96e7b77925837aa5bc84d4c3453ab5f07408e.
+
+== How to view and modify DTBs?
+
+Best approach: we have automatic DTB generation as of 49f96e7b77925837aa5bc84d4c3453ab5f07408e:
+
+* `fs.py`: `--generate-dtb`, but there is a bug: https://github.com/cirosantilli-work/gem5-issues/issues/18
+* `fs_bigLITTLE.py`: if you don't pass `--dtb`, auto-generation is used automatically
+
+Direct approach: https://stackoverflow.com/questions/14000736/tool-to-visualize-the-device-tree-file-dtb-used-by-the-linux-kernel/39931834#39931834
+
+Indirect: the DTBs are generated from dts files in-tree with Makefiles, e.g. in 49f96e7b77925837aa5bc84d4c3453ab5f07408e:
+
+* `system/arm/dt/armv8_big_little.dts`
+* `system/arm/dt/Makefile`
+
+so you can just hack them up and rebuild.
+
+Related: https://www.mail-archive.com/gem5-users@gem5.org/msg15636.html
