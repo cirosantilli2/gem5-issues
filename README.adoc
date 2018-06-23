@@ -106,7 +106,7 @@ so you can just hack them up and rebuild.
 
 Related: https://www.mail-archive.com/gem5-users@gem5.org/msg15636.html
 
-=== How to build gem5 with ccache?
+== How to build gem5 with ccache?
 
 `CXX='ccache c++'` does not work, `CXX=/my/path/to/ccache/wrapper/c++` does not work, the only thing that works it to put `c++` it in your `PATH` as a ccache gem5 symlink:
 
