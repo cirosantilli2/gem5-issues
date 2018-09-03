@@ -120,6 +120,58 @@ export PATH="/usr/lib/ccache:${PATH}" scons
 
 The main is at: `src/sim/main.cc`
 
+....
+ret = initM5Python();
+....
+
+src/sim/init.cc:
+
+....
+230 int
+231 initM5Python()
+232 {
+233     EmbeddedPyBind::initAll();
+234     return EmbeddedPython::initAll();
+235 }
+....
+
+`initAll` basically just initializes the `_m5` Python object, which is used across multiple `.py`.
+
+Back on `main`:
+
+....
+ret = m5Main(argc, argv);
+....
+
+which goes to:
+
+....
+result = PyRun_String(*command, Py_file_input, dict, dict);
+....
+
+with commands looping over:
+
+....
+import m5
+m5.main()
+....
+
+which leads into:
+
+....
+src/python/m5/main.py#main
+....
+
+which finally calls your config file like `fs.py` with:
+
+....
+filename = sys.argv[0]
+filedata = file(filename, 'r').read()
+filecode = compile(filedata, filename, 'exec')
+[...]
+exec filecode in scope
+....
+
 === How gem5 interacts with Python?
 
 It uses pybind11.
@@ -216,5 +268,7 @@ TODO: why is this needed? pybind11 seems to handle constructor arguments just fi
 
 * https://github.com/pybind/pybind11/blob/v2.2.3/tests/test_class.py#L77
 * https://github.com/pybind/pybind11/blob/v2.2.3/tests/test_class.cpp#L41
+
+TODO: how does this work at all? With pybind11 examples, a Python module is generated from `C++`. But here we have both a Python class, and a C++ class, so who defines the module?
 
 Tested on gem5 59b6062b297c7cf20ae562978e37e7b373844220.
