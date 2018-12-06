@@ -275,4 +275,39 @@ Tested on gem5 59b6062b297c7cf20ae562978e37e7b373844220.
 
 === Why everything under src/python requires a rebuild even though it is Python?
 
-TODO. Very annoying.
+https://stackoverflow.com/questions/52312070/how-to-modify-a-file-under-src-python-and-run-it-without-rebuilding-in-gem5
+
+=== What is the structure of the build directory?
+
+At a5bc2291391b0497fdc60fdc960e07bcecebfb8f we have:
+
+    .scons_config/
+    ARM/
+    drampower/
+    dramsim2/
+    fputils/
+    googletest/
+    iostream3/
+    libelf/
+    libfdt/
+    nomali/
+    systemc/
+    variables/
+    scons_config.log
+    sconsign.dblite
+    variables.global
+
+So basically:
+
+- `ARM/`: contains `src/` build objects and symlinks to source
+- `variables/ARM` and `variables.global`: SCons `Variables` thingy: https://scons.org/doc/2.4.1/HTML/scons-user.html#idp1378575484
+- `scons.*`: SCons metadata, don't ask
+- all other directories: from `ext/`. Therefore presumably arch agnostic and reused across builds of different archs.
+
+==== Why are all C++ symlinked into the build dir?
+
+Some scons madness.
+
+https://scons.org/doc/2.4.1/HTML/scons-user.html#idp1378838508 generates hard links by default.
+
+Then the a5bc2291391b0497fdc60fdc960e07bcecebfb8f SConstruct does uses symlinks in a futile attempt to make things better for editors.
