@@ -143,107 +143,6 @@ filecode = compile(filedata, filename, 'exec')
 exec filecode in scope
 ....
 
-=== How gem5 interacts with Python?
-
-It uses pybind11.
-
-The C++ executable both:
-
-* starts running the Python executable
-* provides Python classes written in C++ for that Python code to use
-
-An example of this can be found at:
-
-* https://docs.python.org/2/extending/embedding.html#extending-embedded-python
-* https://github.com/pybind/pybind11/tree/v2.2.3/tests/test_embed
-
-Then, then gem5 magic `SimObject` class adds some crazy stuff on top of it further... what a mess. In particular, it auto generates `params/` headers.
-
-Let's study `BadDevice` for example:
-
-`src/dev/BadDevice.py` defines `devicename`:
-
-....
-class BadDevice(BasicPioDevice):
-    type = 'BadDevice'
-    cxx_header = "dev/baddev.hh"
-    devicename = Param.String("Name of device to error on")
-....
-
-`build/ARM/params/BadDevice.hh` (auto-generated):
-
-....
-#ifndef __PARAMS__BadDevice__
-#define __PARAMS__BadDevice__
-
-class BadDevice;
-
-#include <cstddef>
-#include <string>
-
-#include "params/BasicPioDevice.hh"
-
-struct BadDeviceParams
-    : public BasicPioDeviceParams
-{
-    BadDevice * create();
-    std::string devicename;
-};
-
-#endif // __PARAMS__BadDevice__
-....
-
-`src/dev/baddev.hh` then uses the parameters on the constructor:
-
-....
-class BadDevice : public BasicPioDevice
-{
-  private:
-    std::string devname;
-
-  public:
-    typedef BadDeviceParams Params;
-
-  protected:
-    const Params *
-    params() const
-    {
-        return dynamic_cast<const Params *>(_params);
-    }
-
-  public:
-     /**
-      * Constructor for the Baddev Class.
-      * @param p object parameters
-      * @param a base address of the write
-      */
-    BadDevice(Params *p);
-....
-
-`src/dev/alpha/Tsunami.py` shows the assignment from Python is:
-
-....
-    fb = BadDevice(pio_addr=0x801fc0003d0, devicename='FrameBuffer')
-....
-
-`src/dev/baddev.cc` then uses the parameter:
-
-....
-BadDevice::BadDevice(Params *p)
-    : BasicPioDevice(p, 0x10), devname(p->devicename)
-{
-}
-....
-
-TODO: why is this needed? pybind11 seems to handle constructor arguments just fine:
-
-* https://github.com/pybind/pybind11/blob/v2.2.3/tests/test_class.py#L77
-* https://github.com/pybind/pybind11/blob/v2.2.3/tests/test_class.cpp#L41
-
-TODO: how does this work at all? With pybind11 examples, a Python module is generated from `C++`. But here we have both a Python class, and a C++ class, so who defines the module?
-
-Tested on gem5 59b6062b297c7cf20ae562978e37e7b373844220.
-
 === Why everything under src/python requires a rebuild even though it is Python?
 
 https://stackoverflow.com/questions/52312070/how-to-modify-a-file-under-src-python-and-run-it-without-rebuilding-in-gem5
@@ -282,6 +181,68 @@ Some scons madness.
 https://scons.org/doc/2.4.1/HTML/scons-user.html#idp1378838508 generates hard links by default.
 
 Then the a5bc2291391b0497fdc60fdc960e07bcecebfb8f SConstruct does uses symlinks in a futile attempt to make things better for editors.
+
+== ISA tutorial
+
+The ISA is a funky Python mini-language that generates C++ code.
+
+It exists partly because gem5 dates from 2003, when C++ templates were not good enough, but also because it is inherently complex to map registers across multiple CPU models. C++ will likely reduce the need for this madness.
+
+== How stats work
+
+GDB call stack to dumpstats:
+
+....
+Stats::pythonDump () at build/ARM/python/pybind11/stats.cc:58
+Stats::StatEvent::process() ()
+GlobalEvent::BarrierEvent::process (this=0x555559fa6a80) at build/ARM/sim/global_event.cc:131
+EventQueue::serviceOne (this=this@entry=0x555558c36080) at build/ARM/sim/eventq.cc:228
+doSimLoop (eventq=0x555558c36080) at build/ARM/sim/simulate.cc:219
+simulate (num_cycles=<optimized out>) at build/ARM/sim/simulate.cc:132
+....
+
+`Stats::pythonDump` does:
+
+....
+void
+pythonDump()
+{
+    py::module m = py::module::import("m5.stats");
+    m.attr("dump")();
+}
+....
+
+This calls `src/python/m5/stats/__init__.py` in `def dump` does the main dumping
+
+That function does notably:
+
+....
+    for output in outputList:
+        if output.valid():
+            output.begin()
+            for stat in stats_list:
+                stat.visit(output)
+            output.end()
+....
+
+begin and end are defined in C++ and output the header and tail respectively
+
+....
+void
+Text::begin()
+{
+    ccprintf(*stream, "\n---------- Begin Simulation Statistics ----------\n");
+}
+
+void
+Text::end()
+{
+    ccprintf(*stream, "\n---------- End Simulation Statistics   ----------\n");
+    stream->flush();
+}
+....
+
+`stats_list` contains the stats, and `stat.visit` prints them, `outputList` contains by default just the text output. I don't see any other types of output in gem5, but likely JSON / binary formats could be envisioned.
 
 == ARM
 
