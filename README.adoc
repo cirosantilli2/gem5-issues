@@ -87,62 +87,6 @@ export PATH="/usr/lib/ccache:${PATH}" scons
 
 == Source code analysis
 
-=== Entry point
-
-The main is at: `src/sim/main.cc`
-
-....
-ret = initM5Python();
-....
-
-src/sim/init.cc:
-
-....
-230 int
-231 initM5Python()
-232 {
-233     EmbeddedPyBind::initAll();
-234     return EmbeddedPython::initAll();
-235 }
-....
-
-`initAll` basically just initializes the `_m5` Python object, which is used across multiple `.py`.
-
-Back on `main`:
-
-....
-ret = m5Main(argc, argv);
-....
-
-which goes to:
-
-....
-result = PyRun_String(*command, Py_file_input, dict, dict);
-....
-
-with commands looping over:
-
-....
-import m5
-m5.main()
-....
-
-which leads into:
-
-....
-src/python/m5/main.py#main
-....
-
-which finally calls your config file like `fs.py` with:
-
-....
-filename = sys.argv[0]
-filedata = file(filename, 'r').read()
-filecode = compile(filedata, filename, 'exec')
-[...]
-exec filecode in scope
-....
-
 === Why everything under src/python requires a rebuild even though it is Python?
 
 https://stackoverflow.com/questions/52312070/how-to-modify-a-file-under-src-python-and-run-it-without-rebuilding-in-gem5
@@ -174,75 +118,11 @@ So basically:
 - `scons.*`: SCons metadata, don't ask
 - all other directories: from `ext/`. Therefore presumably arch agnostic and reused across builds of different archs.
 
-==== Why are all C++ symlinked into the build dir?
-
-Some scons madness.
-
-https://scons.org/doc/2.4.1/HTML/scons-user.html#idp1378838508 generates hard links by default.
-
-Then the a5bc2291391b0497fdc60fdc960e07bcecebfb8f SConstruct does uses symlinks in a futile attempt to make things better for editors.
-
 == ISA tutorial
 
 The ISA is a funky Python mini-language that generates C++ code.
 
 It exists partly because gem5 dates from 2003, when C++ templates were not good enough, but also because it is inherently complex to map registers across multiple CPU models. C++ will likely reduce the need for this madness.
-
-== How stats work
-
-GDB call stack to dumpstats:
-
-....
-Stats::pythonDump () at build/ARM/python/pybind11/stats.cc:58
-Stats::StatEvent::process() ()
-GlobalEvent::BarrierEvent::process (this=0x555559fa6a80) at build/ARM/sim/global_event.cc:131
-EventQueue::serviceOne (this=this@entry=0x555558c36080) at build/ARM/sim/eventq.cc:228
-doSimLoop (eventq=0x555558c36080) at build/ARM/sim/simulate.cc:219
-simulate (num_cycles=<optimized out>) at build/ARM/sim/simulate.cc:132
-....
-
-`Stats::pythonDump` does:
-
-....
-void
-pythonDump()
-{
-    py::module m = py::module::import("m5.stats");
-    m.attr("dump")();
-}
-....
-
-This calls `src/python/m5/stats/__init__.py` in `def dump` does the main dumping
-
-That function does notably:
-
-....
-    for output in outputList:
-        if output.valid():
-            output.begin()
-            for stat in stats_list:
-                stat.visit(output)
-            output.end()
-....
-
-begin and end are defined in C++ and output the header and tail respectively
-
-....
-void
-Text::begin()
-{
-    ccprintf(*stream, "\n---------- Begin Simulation Statistics ----------\n");
-}
-
-void
-Text::end()
-{
-    ccprintf(*stream, "\n---------- End Simulation Statistics   ----------\n");
-    stream->flush();
-}
-....
-
-`stats_list` contains the stats, and `stat.visit` prints them, `outputList` contains by default just the text output. I don't see any other types of output in gem5, but likely JSON / binary formats could be envisioned.
 
 == ARM
 
