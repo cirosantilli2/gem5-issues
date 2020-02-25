@@ -22,6 +22,10 @@ This repository has two functions:
 
 === Issue tracker
 
+Edit: one was created in 2020 at: https://gem5.atlassian.net/projects/GEM5/issues
+
+Old section:
+
 Completely unofficial gem5 issue tracker for https://github.com/gem5/gem5 , the mailing list is the only official one: http://gem5.org/Mailing_Lists Request for official GitHub tracker was declined:
 
 * https://www.mail-archive.com/gem5-dev@gem5.org/msg24951.html
@@ -43,20 +47,6 @@ Linux kernel related things and some more will be kept at: https://github.com/ci
 
 These cheats will often be summaries of solved issues, or smaller things which we didn't think deserve an issue, or that we were able to solve by ourselves without creating an issue.
 
-== How to get a graph graphical representation of the topology of the system being simulated?
-
-....
-pip install --user pydot
-....
-
-then run gem5 normally, and:
-
-....
-xdg-open m5out/config.dot.pdf
-....
-
-As in http://gem5.org/wiki/images/0/0e/ASPLOS2017_gem5_tutorial.pdf page 25.
-
 == How does gem5 find its Python configuration imports?
 
 I think it is just done with `PYTHONPATH`, nothing is hardcoded on the executable.
@@ -71,7 +61,7 @@ addToPath('../')
 
 == How to specify the bootloader explicitly without M5_PATH in fs.py?
 
-TODO
+Edit: a param `--bootloader` parameter was added to fs.py and se.py for that: https://stackoverflow.com/questions/56319473/gem-5-ioerror-cant-find-a-path-to-system-files-full-system-x86-simulation-set/56320982#56320982
 
 I just want to point to `boot_emm.arm` directly, and not have it be found with the annoying environment `M5_OUT` variable.
 
